@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+body{
+    padding: 0 .5rem;
+}
+header{
+    margin: auto;
+    width: max-content;
+}
+.list-card{
+    background-color: bisque;
+    max-width: 60rem;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 6px;
+}
+.list-card > *{
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+.list-card input{
+    border: none;
+    padding: 0.7rem;
+    font-size: 20px;
+}
+.list-card ul{
+    margin-top: 1rem;
+}
+.list-card li{
+    list-style: none;
+}
+.completed .text{
+    display: flex;
+    justify-content: space-between;
+}
