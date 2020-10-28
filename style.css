@@ -1,19 +1,21 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: aliceblue;
 }
 body{
     padding: 0 .5rem;
+    font-size: 17px;
 }
 header{
-    margin: auto;
-    width: max-content;
+    margin: 1rem;
+    font-size: larger;
+}
+.app-body{
+    max-width: 60rem;
+    margin: 5rem auto;
 }
 .list-card{
     background-color: bisque;
-    max-width: 60rem;
-    margin: 5rem auto;
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -23,10 +25,27 @@ header{
     margin-bottom: 1rem;
     padding: 0.5rem;
 }
+.list-card form{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
 .list-card input{
     border: none;
     padding: 0.7rem;
     font-size: 20px;
+}
+.list-card input:first-child{
+    width: 90%;
+   
+}
+.list-card input[type="submit"]{
+    border-radius: 60%;
+    margin-left: 0.6rem;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    font-size: 25s;
 }
 .list-card ul{
     margin-top: 1rem;
@@ -35,6 +54,22 @@ header{
     list-style: none;
 }
 .completed .text{
+    display: flex;
+    justify-content: space-between;
+}
+/* .add-new-list >*{
+    margin: 1.5rem auto;
+    width: fit-content;
+    padding: 0.7rem 4rem;
+    background-color: white;
+    border: 10px;
+    cursor: pointer;
+} */
+
+ul li{
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: white;
     display: flex;
     justify-content: space-between;
 }

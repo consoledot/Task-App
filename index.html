@@ -8,28 +8,35 @@
     <title>To-Do List</title>
 </head>
 <body>
-    <header>
-        <h4>My TODO App</h4>
-    </header>
-    <section class="list-card card">
-        <input type="text" placeholder="Add a Task" >
-        <div class="todos todo">
-            <ul>
-                <li>Leave Naija</li>
-                <li>Work with Shopify</li>
-                <li>Make a money</li>
-            </ul>
-        </div>
-        <div class="completed card">
-            <div class="text">
-                <p>Completed(<span>2</span>)</p>
-                <i class="fa fa-angle-down"></i>
+    <div class="app-body">
+        <header>
+            <h4>My TODO App</h4>
+        </header>
+        <section class="list-card card">
+            <form action="" id="form">
+                <input id= "input-value" type="text" placeholder="Add a Task" value="" >
+                <input type="submit" value="+">
+            </form>
+          
+            <div class="todos todo">
+                <ul>
+                </ul>
             </div>
-            <ul>
-                <li>Get a job</li>
-                <li>Get a new laptop</li>
-            </ul>
-        </div>
-    </section>
+            <div class="completed card">
+                <div class="text">
+                    <p>Completed(<span>2</span>)</p>
+                    <i class="fa fa-angle-down"></i>
+                </div>
+                <ul>
+                    <li>Get a job<i class="fa fa-trash"></i></li>
+                    <li>Get a new laptop</li>
+                </ul>
+            </div>
+        </section>
+            <!-- <div class="add-new-list">
+                <p>+   Add New List </p>
+            </div> -->
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
