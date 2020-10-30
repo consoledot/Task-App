@@ -15,7 +15,7 @@ header{
     margin: 5rem auto;
 }
 .list-card{
-    background-color: bisque;
+    background-color: rgb(164, 164, 255);
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -37,7 +37,7 @@ header{
 }
 .list-card input:first-child{
     width: 90%;
-   
+    border-radius: 5px;   
 }
 .list-card input[type="submit"]{
     border-radius: 60%;
@@ -47,25 +47,11 @@ header{
     cursor: pointer;
     font-size: 25s;
 }
-/* .list-card ul{
-    margin-top: 1rem;
-}
-.list-card li{
-    list-style: none;
-} */
+
 .completed .text{
     display: flex;
     justify-content: space-between;
 }
-/* .add-new-list >*{
-    margin: 1.5rem auto;
-    width: fit-content;
-    padding: 0.7rem 4rem;
-    background-color: white;
-    border: 10px;
-    cursor: pointer;
-} */
-
 ul li{
     padding: 1rem;
     margin: 0.5rem 0;
@@ -74,6 +60,7 @@ ul li{
     justify-content: space-between;
     border-bottom: gainsboro 1px solid;
     list-style: none;
+    border-radius: 5px;
 }
 ul li span{
     display: flex;
@@ -81,7 +68,16 @@ ul li span{
 }
 ul li span p{
     margin-left: 1rem;
+    font-size: 20px;
+}
+ul li i{
+    cursor: pointer;
+    height: 100%;
 }
 ul li i:last-child{
     float: right;
+    color: red;
+}
+.fa{
+    font-size: 30px;
 }
