@@ -1,9 +1,8 @@
-let todos =[]
+let todos = JSON.parse(localStorage.getItem("todos"))||[] 
 const inputValue = document.querySelector("#input-value")
 const form = document.getElementsByTagName("form")[0]
 const CurrentTodoList = document.querySelector(".todos ul")
 const CompletedTodoList = document.querySelector(".completed ul")
-const Tasks = [...document.querySelectorAll('ul')]
 let numberOfCompleted = document.getElementById("number")
 
 const addTodoToUI =(value, element)=>{
@@ -42,11 +41,10 @@ const toggleCompleted = (e, array, currentNode, nextNode, numOfCompleted)=>{
              localStorage.setItem("todos", JSON.stringify(array))
     }
 }
-const getNumberOfCompleted = (displayNum, array)=>{
-    let number = array.filter(todo => {
+const getNumberOfCompleted = (displayNum,array)=>{
+    displayNum.textContent = array.filter(todo => {
         if(todo.completed) return todo
     }).length
-    displayNum.textContent = number
 }
 
 const deleteTodo = (e, array, Node, numOfCompleted)=>{
@@ -61,6 +59,20 @@ const deleteTodo = (e, array, Node, numOfCompleted)=>{
             } 
              
 }
+const Init = (array, numOfCompleted, completed, current)=>{
+    getNumberOfCompleted(numOfCompleted, array)
+    array.filter(todo=>{
+        if(!todo.completed){
+            let nodeValue = document.createElement('li')
+            nodeValue.innerHTML = `<span><i class="fa fa-square-o"></i> <p>${todo.value}</p></span><i class="fa fa-trash"></i>`
+            current.insertBefore(nodeValue, CurrentTodoList.childNodes[0])
+        }else{
+            let nodeValue = document.createElement('li')
+            nodeValue.innerHTML = `<span><i class="fa fa-check-square-o"></i> <p>${todo.value}</p></span><i class="fa fa-trash"></i>`
+            completed.insertBefore(nodeValue, CompletedTodoList.childNodes[0])
+        }
+    })
+}
 form.addEventListener("submit", e=>{
     e.preventDefault()
     const todo = inputValue.value.trim()
@@ -69,7 +81,7 @@ form.addEventListener("submit", e=>{
     inputValue.value = ""
 })
 CurrentTodoList.addEventListener("click", (e)=>{
-        deleteTodo(e, todos, CurrentTodoList, CompletedTodoList, numberOfCompleted)
+        deleteTodo(e, todos, CurrentTodoList, numberOfCompleted)
         toggleCompleted(e, todos, CurrentTodoList, CompletedTodoList, numberOfCompleted)
 })
 CompletedTodoList.addEventListener("click", e=>{
@@ -78,20 +90,13 @@ CompletedTodoList.addEventListener("click", e=>{
 })
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    todos = JSON.parse(localStorage.getItem("todos"))
-    numberOfCompleted.textContent = todos.filter(todo => {
-        if(todo.completed) return todo
-    }).length
-
-    todos.filter(todo=>{
-        if(!todo.completed){
-            let nodeValue = document.createElement('li')
-            nodeValue.innerHTML = `<span><i class="fa fa-square-o"></i> <p>${todo.value}</p></span><i class="fa fa-trash"></i>`
-            CurrentTodoList.insertBefore(nodeValue, CurrentTodoList.childNodes[0])
-        }else{
-            let nodeValue = document.createElement('li')
-            nodeValue.innerHTML = `<span><i class="fa fa-check-square-o"></i> <p>${todo.value}</p></span><i class="fa fa-trash"></i>`
-            CompletedTodoList.insertBefore(nodeValue, CompletedTodoList.childNodes[0])
-        }
-    })
+  Init(todos,numberOfCompleted,CompletedTodoList,CurrentTodoList)
 })
+
+if(navigator.serviceWorker){
+    window.addEventListener("load",()=>{
+       navigator.serviceWorker
+          .register("./sw.js")
+          .then(req => console.log)
+    })
+ }
