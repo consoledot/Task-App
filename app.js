@@ -90,6 +90,7 @@ CompletedTodoList.addEventListener("click", e=>{
 })
 
 document.addEventListener("DOMContentLoaded", ()=>{
+    inputValue.focus()
   Init(todos,numberOfCompleted,CompletedTodoList,CurrentTodoList)
 })
 
