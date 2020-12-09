@@ -24,22 +24,22 @@ const toggleCompleted = (e, array, currentNode, nextNode, numOfCompleted)=>{
     const item = e.path[0]
     const itemClassArray = [...item.classList]
     if(itemClassArray.includes("fa-square-o") || itemClassArray.includes("fa-check-square-o")){
-         const text = e.path[2].textContent.trim()
-         const index = array.findIndex(todo => todo.value === text)
-             array[index].completed = !array[index].completed
-             currentNode.removeChild(e.path[2])
-             nextNode.appendChild(e.path[2])
-             const iconPath = e.path[2].childNodes[0].firstChild.classList
-             if(array[index].completed){
-                iconPath.remove("fa-square-o")
-                iconPath.add("fa-check-square-o")
-             }else{
-                iconPath.add("fa-square-o")
-                iconPath.remove("fa-check-square-o")
-             } 
-             getNumberOfCompleted(numOfCompleted, array)
-             localStorage.setItem("todos", JSON.stringify(array))
-    }
+        const text = e.path[2].textContent.trim()
+        const index = array.findIndex(todo => todo.value === text)
+        array[index].completed = !array[index].completed
+        currentNode.removeChild(e.path[2])
+        nextNode.appendChild(e.path[2])
+        const iconPath = e.path[2].childNodes[0].firstChild.classList
+        if(array[index].completed){
+            iconPath.remove("fa-square-o")
+            iconPath.add("fa-check-square-o")
+        }else{
+            iconPath.add("fa-square-o")
+            iconPath.remove("fa-check-square-o")
+        } 
+        getNumberOfCompleted(numOfCompleted, array)
+        localStorage.setItem("todos", JSON.stringify(array))
+}
 }
 const getNumberOfCompleted = (displayNum,array)=>{
     displayNum.textContent = array.filter(todo => {
@@ -49,14 +49,14 @@ const getNumberOfCompleted = (displayNum,array)=>{
 
 const deleteTodo = (e, array, Node, numOfCompleted)=>{
     const item = e.path[0]
-        if([...item.classList].includes("fa-trash")){
-                Node.removeChild(e.path[1])
-                const text = e.path[1].textContent.trim()
-                const index = array.findIndex(todo => todo.value === text)
-                array.splice(index, 1)
-                getNumberOfCompleted(numOfCompleted, array)
-                localStorage.setItem("todos", JSON.stringify(array))
-            } 
+    if([...item.classList].includes("fa-trash")){
+        Node.removeChild(e.path[1])
+        const text = e.path[1].textContent.trim()
+        const index = array.findIndex(todo => todo.value === text)
+        array.splice(index, 1)
+        getNumberOfCompleted(numOfCompleted, array)
+        localStorage.setItem("todos", JSON.stringify(array))
+    } 
              
 }
 const Init = (array, numOfCompleted, completed, current)=>{
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 if(navigator.serviceWorker){
     window.addEventListener("load",()=>{
        navigator.serviceWorker
-          .register("./sw.js")
-          .then(req => console.log)
+        .register("./sw.js")
+        .then(req => console.log)
     })
  }
